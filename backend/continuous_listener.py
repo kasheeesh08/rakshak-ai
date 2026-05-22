@@ -5,6 +5,7 @@ from app.services.speech_service import transcribe_audio
 from app.services.preprocessing import normalize_hinglish
 from app.services.nlp_service import classify_emergency
 from app.services.hybrid_classifier import keyword_boost
+from app.services.wakeword_service import detect_wake_word
 
 
 SAMPLERATE = 16000
@@ -49,6 +50,16 @@ while True:
 
         print("\nTRANSCRIBED:")
         print(transcribed_text)
+
+        wake_detected = detect_wake_word(
+            transcribed_text
+        )
+
+        if not wake_detected:
+
+            print("\nNo wake word detected.")
+            print("\n" + "=" * 50)
+            continue
 
         normalized_text = normalize_hinglish(
             transcribed_text
