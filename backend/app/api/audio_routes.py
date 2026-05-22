@@ -4,7 +4,7 @@ import shutil
 from app.services.speech_service import transcribe_audio
 from app.services.preprocessing import normalize_hinglish
 from app.services.nlp_service import classify_emergency
-
+from app.services.hybrid_classifier import keyword_boost
 
 router = APIRouter()
 
@@ -23,9 +23,15 @@ async def analyze_audio_emergency(file: UploadFile = File(...)):
 
     prediction = classify_emergency(normalized_text)
 
+    keyword_result = keyword_boost(normalized_text)
+
     return {
         "transcribed_text": transcribed_text,
         "normalized_text": normalized_text,
-        "predicted_emergency": prediction["label"],
-        "confidence_score": prediction["score"]
+
+        "transformer_prediction": prediction["label"],
+        "transformer_confidence": prediction["score"],
+
+        "keyword_prediction": keyword_result["keyword_prediction"],
+        "keyword_score": keyword_result["keyword_score"]
     }
