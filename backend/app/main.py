@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from app.api.audio_routes import router as audio_router
 
 from app.services.nlp_service import classify_emergency
 from app.services.preprocessing import normalize_hinglish
@@ -17,6 +18,7 @@ def root():
         "message": "Rakshak AI backend is running successfully"
     }
 
+app.include_router(audio_router)
 
 @app.post("/analyze-emergency")
 def analyze_emergency(request: EmergencyRequest):
