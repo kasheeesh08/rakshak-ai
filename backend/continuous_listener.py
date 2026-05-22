@@ -6,11 +6,10 @@ from app.services.preprocessing import normalize_hinglish
 from app.services.nlp_service import classify_emergency
 from app.services.hybrid_classifier import keyword_boost
 from app.services.wakeword_service import detect_wake_word
-
+from app.services.vad_service import contains_speech
 
 SAMPLERATE = 16000
 DURATION = 5
-
 
 def record_audio():
 
@@ -39,6 +38,16 @@ while True:
     try:
 
         audio_path = record_audio()
+
+        speech_detected = contains_speech(
+        audio_path
+        )
+
+        if not speech_detected:
+
+            print("\nNo speech activity detected.")
+            print("\n" + "=" * 50)
+            continue
 
         transcribed_text = transcribe_audio(audio_path)
 
