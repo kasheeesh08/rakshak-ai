@@ -1,10 +1,19 @@
-import whisper
-
-model = whisper.load_model("base")
+from transformers import pipeline
 
 
-def transcribe_audio(audio_path: str):
+pipe = pipeline(
+    task="automatic-speech-recognition",
+    model="openai/whisper-small"
+)
 
-    result = model.transcribe(audio_path)
+
+def transcribe_audio(audio_path):
+
+    result = pipe(
+        audio_path,
+        generate_kwargs={
+            "language": "hindi"
+        }
+    )
 
     return result["text"]

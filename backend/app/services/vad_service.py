@@ -2,7 +2,7 @@ import wave
 import audioop
 
 
-THRESHOLD = 500
+THRESHOLD = 120
 
 
 def contains_speech(audio_path):
@@ -14,5 +14,7 @@ def contains_speech(audio_path):
     rms = audioop.rms(frames, 2)
 
     wf.close()
+
+    print(f"\nAudio RMS Energy: {rms}")
 
     return rms > THRESHOLD
