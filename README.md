@@ -1,66 +1,244 @@
-# Rakshak AI
+# 🚨 Rakshak AI
 
-Rakshak AI is an offline-capable multilingual emergency voice assistant powered by NLP, speech recognition, and real-time emergency intelligence.
+Rakshak AI is a real-time AI-powered emergency detection and response system built using FastAPI, React, Whisper AI, and NLP pipelines.
 
----
-
-## Features
-
-- Multilingual speech recognition
-- Hinglish understanding
-- Offline emergency detection
-- Emergency intent classification
-- Severity detection
-- Smart SOS summarization
-- Real-time emergency assistance
-- Location extraction
-- AI-powered emergency processing
+The system listens to emergency voice input, transcribes speech into text, detects the emergency type, extracts severity and location, displays results on a live dashboard, and sends SMS alerts using Twilio.
 
 ---
 
-## Tech Stack
+# 🔥 Features
 
-### Frontend
-- Next.js
-- Tailwind CSS
-- Framer Motion
+## ✅ Real-Time Voice Recording
+- Record emergency voice input directly from the browser
+- Audio processed instantly using backend AI pipeline
 
-### Backend
+## ✅ Speech-to-Text using Whisper
+- OpenAI Whisper model used for emergency transcription
+- Supports Hinglish / mixed Hindi-English speech to some extent
+
+## ✅ Emergency Classification
+Detects emergency categories such as:
+- Fire Emergency
+- Road Accident
+- Medical Emergency
+- Violence / Threat situations
+
+## ✅ Severity Detection
+Classifies emergency intensity:
+- Low
+- Medium
+- High
+- Critical
+
+## ✅ Location Extraction
+Extracts location names from spoken emergency text.
+
+Examples:
+- "Fire near CST station"
+- "Accident at Bandra"
+
+## ✅ Live Emergency Dashboard
+Frontend displays:
+- Transcription
+- Emergency type
+- Severity level
+- Detected location
+- Emergency map visualization
+
+## ✅ Dynamic Map Rendering
+Uses OpenStreetMap + Leaflet.js for location visualization.
+
+## ✅ SMS Emergency Alerts
+Automatically sends SMS alerts using Twilio API.
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+- React.js
+- Axios
+- Leaflet.js
+- React-Leaflet
+- CSS
+
+## Backend
 - FastAPI
 - Python
 
-### AI/NLP
-- Whisper
+## AI / NLP
+- OpenAI Whisper
 - HuggingFace Transformers
-- spaCy
-- ONNX Runtime
+- Custom NLP preprocessing
+- Keyword-based hybrid classifier
 
-### Database
-- PostgreSQL
-
----
-
-## Project Goals
-
-- Build an offline-first emergency AI assistant
-- Support multilingual emergency reporting
-- Enable low-network emergency intelligence
-- Create real-time actionable SOS generation
+## APIs / Services
+- Twilio SMS API
+- OpenStreetMap Nominatim API
 
 ---
 
-## Architecture
+# 📂 Project Structure
 
-Voice Input
-→ Speech Recognition
-→ NLP Processing
-→ Emergency Detection
-→ Severity Analysis
-→ SOS Generation
-→ Emergency Dashboard
+```bash
+rakshak-ai/
+│
+├── backend/
+│   ├── app/
+│   │   ├── api/
+│   │   ├── services/
+│   │   ├── main.py
+│   │
+│   ├── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│
+└── README.md
+```
 
 ---
 
-## Current Status
+# ⚙️ Installation
 
-Phase 1 — Project Foundation & Architecture
+## 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/rakshak-ai.git
+```
+
+---
+
+## 2️⃣ Backend Setup
+
+```bash
+cd rakshak-ai/backend
+```
+
+Create virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate virtual environment:
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run backend:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Backend runs on:
+
+```bash
+http://127.0.0.1:8000
+```
+
+---
+
+## 3️⃣ Frontend Setup
+
+Open new terminal:
+
+```bash
+cd rakshak-ai/frontend
+```
+
+Install packages:
+
+```bash
+npm install
+```
+
+Run frontend:
+
+```bash
+npm run dev
+```
+
+Frontend runs on:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# 📲 Twilio SMS Setup
+
+Create a Twilio account:
+https://www.twilio.com/
+
+Add credentials inside:
+
+```bash
+backend/app/services/sms_service.py
+```
+
+```python
+ACCOUNT_SID = "YOUR_ACCOUNT_SID"
+
+AUTH_TOKEN = "YOUR_AUTH_TOKEN"
+
+TWILIO_PHONE = "YOUR_TWILIO_PHONE"
+
+TARGET_PHONE = "YOUR_PHONE_NUMBER"
+```
+
+---
+
+# 🚀 How It Works
+
+1. User records emergency voice input
+2. Audio sent to FastAPI backend
+3. Whisper transcribes speech
+4. NLP pipeline classifies emergency
+5. Severity + location extracted
+6. Frontend dashboard updates live
+7. SMS alert sent using Twilio
+8. Emergency location displayed on map
+
+---
+
+# 📌 Current Limitations
+
+- Multilingual support is experimental
+- Location extraction is partially keyword-based
+- Accuracy depends on audio quality
+- Whisper running on CPU may be slower on low-end systems
+- Internet required for SMS and map APIs
+
+---
+
+# 💡 Future Improvements
+
+- Real-time streaming transcription
+- Better multilingual support
+- Hospital / police recommendation system
+- WebSocket live updates
+- Offline lightweight speech models
+- Database logging
+- Admin monitoring dashboard
+
+---
+
+# 👩‍💻 Author
+
+Kashish
+
+Built as an AI + NLP emergency response system project using FastAPI, React, Whisper AI, and NLP pipelines.
