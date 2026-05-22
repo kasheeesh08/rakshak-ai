@@ -256,11 +256,17 @@ Rakshak AI can also detect fire-related emergencies from voice input and display
 
 ---
 
-# 🗺️ Emergency Map Visualization
+# 🗺️ Important pipeline workflow
 
 ![Map Visualization](sms.png)
 
-The dashboard dynamically renders emergency locations using OpenStreetMap and Leaflet.js for quick visual understanding of incident areas.
+This workflow diagram illustrates the complete Rakshak AI processing pipeline, covering NLP-based emergency detection, automated SMS alert generation, and frontend-backend communication.
+
+The left section represents the NLP processing pipeline where emergency voice input is converted into text using OpenAI Whisper, followed by text cleaning, Hinglish normalization, transformer-based classification, and keyword boosting to improve prediction accuracy. The final system predicts emergency categories such as fire emergencies, road accidents, and medical emergencies.
+
+The middle section explains the SMS alert workflow. Once an emergency is detected, the system extracts important information like location and severity level, generates an automated emergency message, and sends real-time SMS alerts using the Twilio API.
+
+The right section demonstrates frontend-backend communication. The React frontend captures live voice input and sends it to the FastAPI backend through Axios API calls. The backend performs AI processing and returns structured JSON responses containing transcription, emergency type, location, and severity, which are then rendered dynamically on the live emergency dashboard.
 
 ---
 
@@ -274,7 +280,6 @@ This workflow explains the end-to-end processing pipeline from voice input to AI
 
 # 🧠 NLP + SMS + Frontend Pipeline
 
-![Pipeline Workflow](sms testing.png)
 
 This diagram explains the NLP pipeline, frontend-backend communication flow, and automated Twilio SMS integration used in Rakshak AI.
 
@@ -306,7 +311,3 @@ This diagram explains the NLP pipeline, frontend-backend communication flow, and
 
 The detected emergency information is automatically converted into an SMS alert and sent using Twilio API with emergency type, location, and severity details.
 
-</tr>
-</table>
-
-The detected emergency information is automatically converted into an SMS alert and sent using Twilio API with emergency type, location, and severity details.
