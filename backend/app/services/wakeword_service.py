@@ -1,17 +1,5 @@
 WAKE_WORDS = [
-
-    # English
-    "help",
-    "emergency",
-    "fire",
-    "accident",
-    "heart attack",
-    "save me",
-    "sos",
-
     # Hinglish
-    "bachao",
-    "bachaao",
     "aag",
     "takkar",
     "chor",
@@ -27,6 +15,7 @@ WAKE_WORDS = [
 
     # Accident related
     "accident",
+    "skid",
     "crash",
     "takkar",
 
@@ -36,20 +25,30 @@ WAKE_WORDS = [
 
     # Medical
     "heart attack",
-    "attack",
+    "unconscious",
+    "not well",
+    "panic attack",
     "injured",
     "behosh",
+    "suffocate",
+    "suffocation",
+    "saans nhi aarhi",
+    "not able to breath",
 
     # Crime
+    "attack",
     "robbery",
+    "thief",
     "chor",
+    "chori",
     "gun",
     "knife",
 
     # Disaster
     "flood",
     "earthquake",
-    "bhukamp"
+    "bhukamp",
+    "tsunami",
 ]
 
 

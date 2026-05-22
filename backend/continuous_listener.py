@@ -8,9 +8,12 @@ from app.services.hybrid_classifier import keyword_boost
 from app.services.wakeword_service import detect_wake_word
 from app.services.vad_service import contains_speech
 from app.services.location_service import extract_location
+from app.services.severity_service import detect_severity
+from app.services.logger_service import save_incident
 
 SAMPLERATE = 16000
 DURATION = 5
+
 
 def record_audio():
 
@@ -41,7 +44,7 @@ while True:
         audio_path = record_audio()
 
         speech_detected = contains_speech(
-        audio_path
+            audio_path
         )
 
         if not speech_detected:
@@ -50,7 +53,9 @@ while True:
             print("\n" + "=" * 50)
             continue
 
-        transcribed_text = transcribe_audio(audio_path)
+        transcribed_text = transcribe_audio(
+            audio_path
+        )
 
         if not transcribed_text:
 
@@ -60,16 +65,6 @@ while True:
 
         print("\nTRANSCRIBED:")
         print(transcribed_text)
-
-        wake_detected = detect_wake_word(
-            transcribed_text
-        )
-
-        if not wake_detected:
-
-            print("\nNo wake word detected.")
-            print("\n" + "=" * 50)
-            continue
 
         normalized_text = normalize_hinglish(
             transcribed_text
@@ -83,6 +78,28 @@ while True:
             normalized_text
         )
 
+        wake_detected = detect_wake_word(
+            transcribed_text
+        )
+
+        detected_severity = detect_severity(
+            transcribed_text
+        )
+
+        keyword_detected = (
+            keyword_prediction["keyword_score"] > 0
+        )
+
+        if not (
+            wake_detected
+            or detected_severity != "unknown"
+            or keyword_detected
+        ):
+
+            print("\nNo emergency trigger detected.")
+            print("\n" + "=" * 50)
+            continue
+
         final_prediction = (
             keyword_prediction["keyword_prediction"]
             if keyword_prediction["keyword_score"] > 0
@@ -90,7 +107,7 @@ while True:
         )
 
         detected_location = extract_location(
-        transcribed_text
+            transcribed_text
         )
 
         print("\nFINAL EMERGENCY DETECTION:")
@@ -98,6 +115,22 @@ while True:
 
         print("\nDETECTED LOCATION:")
         print(detected_location)
+
+        print("\nEMERGENCY SEVERITY:")
+        print(detected_severity)
+
+        save_incident({
+
+            "transcription": transcribed_text,
+
+            "emergency": final_prediction,
+
+            "severity": detected_severity,
+
+            "location": detected_location
+        })
+
+        print("\nIncident saved successfully.")
 
         print("\n" + "=" * 50)
 

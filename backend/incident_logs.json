@@ -1,0 +1,23 @@
+[
+    {
+        "timestamp": "2026-05-23 01:21:06.760075",
+        "transcription": " Fire and Undhiri Station.",
+        "emergency": "fire emergency",
+        "severity": "high",
+        "location": null
+    },
+    {
+        "timestamp": "2026-05-23 01:21:13.095801",
+        "transcription": " My father is unconscious.",
+        "emergency": "medical emergency",
+        "severity": "critical",
+        "location": null
+    },
+    {
+        "timestamp": "2026-05-23 01:21:19.429128",
+        "transcription": " by way accident with bleeding",
+        "emergency": "road accident",
+        "severity": "high",
+        "location": null
+    }
+]
