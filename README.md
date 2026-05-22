@@ -240,7 +240,7 @@ TARGET_PHONE = "YOUR_PHONE_NUMBER"
 
 ---
 
-# 🚨 Road Accident Detection — Thane Station
+# 🚨 Road Accident Detection 
 
 ![Dashboard](dashboard-main.png)
 
@@ -294,7 +294,7 @@ This diagram explains the NLP pipeline, frontend-backend communication flow, and
 
 ### 🚨 Emergency Dashboard
 
-<img src="dashboard-main.png" width="500"/>
+<img src="sms.png" width="500"/>
 
 </td>
 
