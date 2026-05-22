@@ -7,6 +7,7 @@ from app.services.nlp_service import classify_emergency
 from app.services.hybrid_classifier import keyword_boost
 from app.services.wakeword_service import detect_wake_word
 from app.services.vad_service import contains_speech
+from app.services.location_service import extract_location
 
 SAMPLERATE = 16000
 DURATION = 5
@@ -88,8 +89,15 @@ while True:
             else transformer_prediction["label"]
         )
 
+        detected_location = extract_location(
+        transcribed_text
+        )
+
         print("\nFINAL EMERGENCY DETECTION:")
         print(final_prediction)
+
+        print("\nDETECTED LOCATION:")
+        print(detected_location)
 
         print("\n" + "=" * 50)
 
