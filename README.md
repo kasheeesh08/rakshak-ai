@@ -294,7 +294,7 @@ This diagram explains the NLP pipeline, frontend-backend communication flow, and
 
 ### 🚨 Emergency Dashboard
 
-<img src="sms.png" width="500"/>
+<img src="sms testing.png" width="500"/>
 
 </td>
 
