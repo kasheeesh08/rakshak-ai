@@ -236,9 +236,72 @@ TARGET_PHONE = "YOUR_PHONE_NUMBER"
 - Admin monitoring dashboard
 
 ---
+# 📸 System Demonstrations
 
-# 👩‍💻 Author
+---
 
-Kashish
+# 🚨 Road Accident Detection — Thane Station
 
-Built as an AI + NLP emergency response system project using FastAPI, React, Whisper AI, and NLP pipelines.
+![Dashboard](images/dashboard-main.png)
+
+The AI system detects a road accident emergency, extracts the location from speech input, classifies severity level, and visualizes the emergency location dynamically on the map.
+
+---
+
+# 🚒 Fire Emergency Detection
+
+![Fire Emergency](images/fire-emergency.png)
+
+Rakshak AI can also detect fire-related emergencies from voice input and display real-time emergency information including severity and extracted location.
+
+---
+
+# 🗺️ Emergency Map Visualization
+
+![Map Visualization](images/sms.png)
+
+The dashboard dynamically renders emergency locations using OpenStreetMap and Leaflet.js for quick visual understanding of incident areas.
+
+---
+
+# 🔄 Complete Emergency Workflow
+
+![Complete Workflow](images/complete-workflow.png)
+
+This workflow explains the end-to-end processing pipeline from voice input to AI emergency classification, location extraction, dashboard visualization, and SMS alert delivery.
+
+---
+
+# 🧠 NLP + SMS + Frontend Pipeline
+
+![Pipeline Workflow](images/sms testing.png)
+
+This diagram explains the NLP pipeline, frontend-backend communication flow, and automated Twilio SMS integration used in Rakshak AI.
+
+---
+
+# 📲 Live SMS Alert Demonstration
+
+<table>
+<tr>
+
+<td align="center">
+
+### 🚨 Emergency Dashboard
+
+<img src="images/dashboard-main.png" width="500"/>
+
+</td>
+
+<td align="center">
+
+### 📲 SMS Alert Received
+
+<img src="images/sms-alert.jpg" width="260"/>
+
+</td>
+
+</tr>
+</table>
+
+The detected emergency information is automatically converted into an SMS alert and sent using Twilio API with emergency type, location, and severity details.
