@@ -25,13 +25,20 @@ async def analyze_audio_emergency(file: UploadFile = File(...)):
 
     keyword_result = keyword_boost(normalized_text)
 
+    final_prediction = prediction["label"]
+
+    if prediction["score"] < 0.6:
+        final_prediction = keyword_result["keyword_prediction"]
+
     return {
-        "transcribed_text": transcribed_text,
-        "normalized_text": normalized_text,
+    "transcribed_text": transcribed_text,
+    "normalized_text": normalized_text,
 
-        "transformer_prediction": prediction["label"],
-        "transformer_confidence": prediction["score"],
+    "transformer_prediction": prediction["label"],
+    "transformer_confidence": prediction["score"],
 
-        "keyword_prediction": keyword_result["keyword_prediction"],
-        "keyword_score": keyword_result["keyword_score"]
+    "keyword_prediction": keyword_result["keyword_prediction"],
+    "keyword_score": keyword_result["keyword_score"],
+
+    "final_emergency_prediction": final_prediction
     }
